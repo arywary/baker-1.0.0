@@ -571,19 +571,30 @@ h6,
         padding-left: 12px;
     }
 }
-/* Mobile full-height hero carousel */
+/* ===== Mobile Hero Fix ===== */
 @media (max-width: 768px) {
 
-    .carousel-item {
-        height: 85vh;
-        min-height: 380px;
+    /* the carousel wrapper */
+    .header-carousel,
+    .carousel,
+    .carousel-inner {
+        height: calc(100vh - 70px);
     }
 
+    /* each slide */
+    .carousel-item {
+        height: calc(100vh - 70px);
+    }
+
+    /* image behaviour */
     .carousel-item img {
-        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
+        height: 100%;
         object-fit: cover;
-        object-position: center center;
+        object-position: center;
     }
 
 }
