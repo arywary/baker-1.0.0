@@ -571,30 +571,34 @@ h6,
         padding-left: 12px;
     }
 }
-/* ===== Mobile Hero Fix ===== */
+/* ===== Mobile Owl Carousel Fullscreen Fix ===== */
 @media (max-width: 768px) {
 
-    /* the carousel wrapper */
+    /* remove fixed height coming from template */
+    .header-carousel .owl-carousel-item {
+        min-height: calc(100vh - 70px);
+        height: calc(100vh - 70px);
+    }
+
+    /* make carousel system stretch */
     .header-carousel,
-    .carousel,
-    .carousel-inner {
+    .header-carousel .owl-stage-outer,
+    .header-carousel .owl-stage,
+    .header-carousel .owl-item {
         height: calc(100vh - 70px);
     }
 
-    /* each slide */
-    .carousel-item {
-        height: calc(100vh - 70px);
-    }
-
-    /* image behaviour */
-    .carousel-item img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
+    /* image fills screen properly */
+    .header-carousel .owl-carousel-item img {
         height: 100%;
+        width: 100%;
         object-fit: cover;
         object-position: center;
+    }
+
+    /* remove the weird gap under carousel */
+    .container-fluid.p-0.pb-5 {
+        padding-bottom: 0 !important;
     }
 
 }
