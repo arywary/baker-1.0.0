@@ -544,3 +544,24 @@ h6,
         min-height: 340px;
     }
 }
+/* WhatsApp Floating Button */
+.whatsapp-float {
+    position: fixed;
+    width: 55px;
+    height: 55px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 26px;
+    line-height: 55px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    z-index: 999;
+    transition: transform 0.2s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
