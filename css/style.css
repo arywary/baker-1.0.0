@@ -260,18 +260,6 @@ h6,
     transition: .5s;
 }
 
-.product-item:hover {
-    background: var(--primary) !important;
-}
-
-.product-item:hover * {
-    color: var(--light);
-}
-
-.product-item:hover .border-primary {
-    border-color: var(--light) !important;
-}
-
 .product-item .product-overlay {
     position: absolute;
     width: 100%;
@@ -502,6 +490,20 @@ h6,
 }
 .cta-peach * {
     color: #165168;
+}
+/* ===== CTA PHONE SIZE FIX ===== */
+
+.cta-peach .fa-phone-alt {
+    font-size: 32px !important;
+}
+
+.cta-peach .fs-1 {
+    font-size: 22px !important;
+    font-weight: 600;
+}
+
+.cta-peach .fs-5 {
+    font-size: 15px !important;
 }
 /* CTA heading contrast */
 .cta-peach h1
@@ -738,6 +740,45 @@ h6,
         width: auto;
         padding: 14px 28px;
         font-size: 16px;
+    }
+
+}
+/* ===== COMPACT FACT CARDS (MOBILE) ===== */
+
+@media (max-width: 768px) {
+
+    .fact-item {
+        padding: 28px 18px !important;
+        border-radius: 16px;
+    }
+
+}
+@media (max-width: 768px) {
+
+    .fact-item i {
+        font-size: 32px !important;
+        margin-bottom: 16px !important;
+    }
+
+}
+@media (max-width: 768px) {
+
+    .fact-item p {
+        font-size: 15px;
+        margin-bottom: 8px;
+    }
+
+    .fact-item h1 {
+        font-size: 26px !important;
+        line-height: 1.1;
+    }
+
+}
+@media (max-width: 768px) {
+
+    .container-xxl.py-6 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
     }
 
 }
