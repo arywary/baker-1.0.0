@@ -600,3 +600,74 @@ h6,
         font-size: 16px;
     }
 }
+/* ===== CENTER LOGO ON MOBILE ===== */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        justify-content: center !important;
+    }
+
+    .navbar-brand {
+        margin: 0 auto !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .navbar-toggler {
+        position: absolute;
+        right: 15px;
+    }
+
+}
+@media (max-width: 768px) {
+
+    .navbar-collapse {
+        display: none !important;
+    }
+
+}
+/* ===== MOBILE BOTTOM NAV ===== */
+
+.mobile-bottom-nav {
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    .mobile-bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 65px;
+        background: #165168;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        z-index: 9999;
+        box-shadow: 0 -5px 20px rgba(0,0,0,0.15);
+    }
+
+    .mobile-bottom-nav a {
+        color: #FFD4CC;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .mobile-bottom-nav i {
+        font-size: 18px;
+        margin-bottom: 4px;
+    }
+
+    /* Prevent content hiding behind nav */
+    body {
+        padding-bottom: 75px;
+    }
+
+}
