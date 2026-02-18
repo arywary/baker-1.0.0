@@ -524,26 +524,7 @@ h6,
     height: 150px;
     width: auto;
 }
-/* ===== Hero Carousel Consistent Height ===== */
 
-.header-carousel .owl-carousel-item {
-    height: 70vh;
-    min-height: 800px;
-    max-height: 1600px;
-}
-
-.header-carousel .owl-carousel-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-@media (max-width: 768px) {
-    .header-carousel .owl-carousel-item {
-        height: 55vh;
-        min-height: 340px;
-    }
-}
 /* WhatsApp Floating Button */
 .whatsapp-float {
     position: fixed;
@@ -571,34 +552,51 @@ h6,
         padding-left: 12px;
     }
 }
-/* ===== Mobile Owl Carousel Fullscreen Fix ===== */
+.icon-teal {
+    background-color: #165168;
+}
+/* ===== FULL SCREEN HERO (100% MOBILE HEIGHT) ===== */
+
+.header-carousel,
+.header-carousel .owl-stage-outer,
+.header-carousel .owl-stage,
+.header-carousel .owl-item,
+.header-carousel .owl-carousel-item {
+    height: 100svh;
+}
+
+.header-carousel .owl-carousel-item {
+    position: relative;
+}
+
+.header-carousel .owl-carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Keep overlay full height */
+.header-carousel .owl-carousel-inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* Mobile typography adjustment */
 @media (max-width: 768px) {
 
-    /* remove fixed height coming from template */
-    .header-carousel .owl-carousel-item {
-        min-height: calc(100vh - 70px);
-        height: calc(100vh - 70px);
+    .header-carousel h1 {
+        font-size: 34px !important;
+        line-height: 1.1;
     }
 
-    /* make carousel system stretch */
-    .header-carousel,
-    .header-carousel .owl-stage-outer,
-    .header-carousel .owl-stage,
-    .header-carousel .owl-item {
-        height: calc(100vh - 70px);
+    .header-carousel p {
+        font-size: 15px !important;
+        margin-bottom: 20px;
     }
 
-    /* image fills screen properly */
-    .header-carousel .owl-carousel-item img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-        object-position: center;
+    .header-carousel .btn {
+        padding: 14px 26px;
+        font-size: 16px;
     }
-
-    /* remove the weird gap under carousel */
-    .container-fluid.p-0.pb-5 {
-        padding-bottom: 0 !important;
-    }
-
 }
