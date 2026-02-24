@@ -13,7 +13,13 @@
     
     
     // Initiate the wowjs
-    new WOW().init();
+    new WOW({
+    boxClass:     'wow',
+    animateClass: 'animated',
+    offset:       50,       // trigger slightly before visible
+    mobile:       false,    // disable animations on mobile
+    live:         false     // do not constantly scan DOM
+}).init();
 
 
     // Fixed Navbar
@@ -43,18 +49,22 @@
 
     // Header carousel
     $(".header-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 7000,
-        smartSpeed: 1200,
-        loop: true,
-        nav: false,
-        dots: false,
-        items: 1,
-        navText : [
-            '<i class="bi bi-chevron-left"></i>',
-            '<i class="bi bi-chevron-right"></i>'
-        ]
-    });
+    items: 1,
+    loop: true,
+    autoplay: true,
+    autoplayTimeout: 5000,
+    autoplayHoverPause: true,
+
+    smartSpeed: 600,        // reduced from 1500 (less repaint cost)
+
+    dots: false,
+    nav: false,
+
+    lazyLoad: true,         // critical optimisation
+    preloadImages: false,   // prevents loading all images immediately
+
+    responsiveRefreshRate: 100
+});
 
 
     // Facts counter
