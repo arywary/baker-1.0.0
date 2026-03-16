@@ -884,3 +884,7 @@ img {
 @media (min-width: 1200px) {
     .header-carousel h1 { font-size: 44px; }
 }
+/* ===== CLS Fix — reserve hero space before image loads ===== */
+.header-carousel .owl-carousel-item {
+    background-color: #165168; /* teal placeholder while image loads */
+}

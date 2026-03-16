@@ -15,13 +15,22 @@
     <meta name="description" content="Discover fresh cakes, customised cakes & trending desserts in Chandigarh. Order online for same day cake delivery to your doorstep.">
 
     <link href="img/favicon-32x32.png" rel="icon">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"></noscript>
+    <!-- Critical CSS loads normally -->
     <link href="css/style.css" rel="stylesheet">
+
+    <!-- Non-critical CSS loads after page render -->
+    <link rel="preload" href="css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="css/bootstrap.min.css" rel="stylesheet"></noscript>
+
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet"></noscript>
+
+    <link rel="preload" href="lib/owlcarousel/assets/owl.carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"></noscript>
 </head>
 
 <body>
@@ -59,7 +68,7 @@
     <section class="container-fluid p-0 pb-5">
         <div class="owl-carousel header-carousel position-relative">
             <div class="owl-carousel-item position-relative">
-                <img class="img-fluid" src="img/flowercake.jpg" alt="Pinterest Cake in Chandigarh">
+                <img class="img-fluid" fetchpriority="high" src="img/flowercake.jpg" alt="Pinterest Cake in Chandigarh">
                 <div class="owl-carousel-inner">
                     <div class="container">
                         <div class="row justify-content-start">
@@ -132,10 +141,10 @@
                 <div class="col-lg-6">
                     <div class="row img-twice position-relative h-0">
                         <div class="col-6">
-                            <img class="img-fluid rounded" src="img/IMG_7281.jpg" alt="Custom cake delivery in Chandigarh">
+                            <img class="img-fluid rounded" loading="lazy" src="img/IMG_7281.jpg" alt="Custom cake delivery in Chandigarh">
                         </div>
                         <div class="col-6 align-self-end">
-                            <img class="img-fluid rounded" src="img/IMG_7194.jpg" alt="Order trending cakes online">
+                            <img class="img-fluid rounded" loading="lazy" src="img/IMG_7194.jpg" alt="Order trending cakes online">
                         </div>
                     </div>
                 </div>
@@ -190,7 +199,7 @@
                             <span>Super creamy and gooey cheesecake from Spain to your belly.</span>
                         </div>
                         <div class="position-relative mt-auto">
-                            <img class="img-fluid" src="img/IMG_DAD2E8A520F6-1.jpg" alt="Best Burnt Basque Cheesecake in Chandigarh">
+                            <img class="img-fluid" loading="lazy" src="img/IMG_DAD2E8A520F6-1.jpg" alt="Best Burnt Basque Cheesecake in Chandigarh">
                         </div>
                     </div>
                 </div>
@@ -202,7 +211,7 @@
                             <span>Strawberries and cream, the timeless combo, but make it a cake.</span>
                         </div>
                         <div class="position-relative mt-auto">
-                            <img class="img-fluid" src="img/IMG_8037 2.jpg" alt="Fresh Strawberry Cake in Chandigarh">
+                            <img class="img-fluid" loading="lazy" src="img/IMG_8037 2.jpg" alt="Fresh Strawberry Cake in Chandigarh">
                         </div>
                     </div>
                 </div>
@@ -214,7 +223,7 @@
                             <span>A dessert so good it will have you begging for more.</span>
                         </div>
                         <div class="position-relative mt-auto">
-                            <img class="img-fluid" src="img/tiramisu.jpg" alt="Best Tiramisu in Chandigarh">
+                            <img class="img-fluid" loading="lazy" src="img/tiramisu.jpg" alt="Best Tiramisu in Chandigarh">
                         </div>
                     </div>
                 </div>
@@ -226,7 +235,7 @@
                             <span>Gooey and melt-in-mouth brownies with a Biscoff topping</span>
                         </div>
                         <div class="position-relative mt-auto">
-                            <img class="img-fluid" src="img/biscoffbrownies-2.jpg" alt="Brownies in Chandigarh">
+                            <img class="img-fluid" loading="lazy" src="img/biscoffbrownies-2.jpg" alt="Brownies in Chandigarh">
                         </div>
                     </div>
                 </div>
@@ -238,7 +247,7 @@
                             <span>Layers of vanilla sponge, whipped cream and blueberries.</span>
                         </div>
                         <div class="position-relative mt-auto">
-                            <img class="img-fluid" src="img/blueberrycake.jpg" alt="Fresh Blueberry Cake in Chandigarh">
+                            <img class="img-fluid" loading="lazy" src="img/blueberrycake.jpg" alt="Fresh Blueberry Cake in Chandigarh">
                         </div>
                     </div>
                 </div>
@@ -250,7 +259,7 @@
                             <span>Rich cocoa cake with creamy chocolate cremeux frosting</span>
                         </div>
                         <div class="position-relative mt-auto">
-                            <img class="img-fluid" src="img/choccake.jpg" alt="Best Chocolate Cake Chandigarh">
+                            <img class="img-fluid" loading="lazy" src="img/choccake.jpg" alt="Best Chocolate Cake Chandigarh">
                         </div>
                     </div>
                 </div>
@@ -308,10 +317,10 @@
                 <div class="col-lg-6">
                     <div class="row img-twice position-relative h-100">
                         <div class="col-6">
-                            <img class="img-fluid rounded" src="img/gifts.jpg" alt="Corporate gift baskets in Chandigarh">
+                            <img class="img-fluid rounded" loading="lazy" src="img/gifts.jpg" alt="Corporate gift baskets in Chandigarh">
                         </div>
                         <div class="col-6 align-self-end">
-                            <img class="img-fluid rounded" src="img/catering.jpg" alt="Event Catering Service in Chandigarh">
+                            <img class="img-fluid rounded" loading="lazy" src="img/catering.jpg" alt="Event Catering Service in Chandigarh">
                         </div>
                     </div>
                 </div>
