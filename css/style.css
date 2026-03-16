@@ -8,7 +8,30 @@
     --light: #FFD4CC;
     --dark: #165168;
 }
+/* ===== Ensure consistent font display ===== */
+* {
+    font-display: optional;
+}
+/* ===== Font fallback metrics — minimise CLS on font swap ===== */
+@font-face {
+    font-family: 'Playfair Display';
+    size-adjust: 97%;
+    ascent-override: 94%;
+    descent-override: 26%;
+    line-gap-override: 0%;
+    src: local('Georgia');
+    font-weight: 600 700;
+}
 
+@font-face {
+    font-family: 'Roboto';
+    size-adjust: 100%;
+    ascent-override: 92%;
+    descent-override: 24%;
+    line-gap-override: 0%;
+    src: local('Arial');
+    font-weight: 400 500;
+}
 /* ===== Base ===== */
 body {
     background-color: #FFF4F1;
@@ -887,4 +910,18 @@ img {
 /* ===== CLS Fix — reserve hero space before image loads ===== */
 .header-carousel .owl-carousel-item {
     background-color: #165168; /* teal placeholder while image loads */
+}
+/* ===== CLS Fix — lock fact card minimum height ===== */
+.fact-item {
+    min-height: 220px;
+}
+
+@media (max-width: 768px) {
+    .fact-item {
+        min-height: 160px;
+    }
+}
+/* ===== CLS Fix — lock navbar height ===== */
+.navbar {
+    min-height: 70px;
 }
