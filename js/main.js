@@ -12,14 +12,7 @@
     spinner();
     
     
-    // Initiate the wowjs
-    new WOW({
-    boxClass:     'wow',
-    animateClass: 'animated',
-    offset:       50,       // trigger slightly before visible
-    mobile:       false,    // disable animations on mobile
-    live:         false     // do not constantly scan DOM
-}).init();
+    
 
 
     // Fixed Navbar

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Gallery — Half Baked Chandigarh | Cakes, Desserts & More</title>
+    <meta name="description" content="Browse the Half Baked gallery — custom cakes, eggless desserts, brownies, cheesecakes and more, all made fresh and delivered across Chandigarh.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Gallery — Half Baked Chandigarh">
+    <meta property="og:image" content="https://www.halfbakedindia.com/img/flowercake.jpg">
+    <meta property="og:url" content="https://www.halfbakedindia.com/gallery.html">
+    <meta property="og:type" content="website">
+
+    <link href="img/favicon-32x32.png" rel="icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+
+        /* ===== Force teal navbar on this page ===== */
+        .navbar {
+            background: rgba(22, 81, 104, 0.95) !important;
+            backdrop-filter: blur(6px);
+        }
+
+        /* ===== Page header ===== */
+        .gallery-header {
+            padding-top: 120px;
+            padding-bottom: 40px;
+            text-align: center;
+        }
+        .gallery-header h1 {
+            font-family: 'Playfair Display', serif;
+            color: #165168;
+            font-size: clamp(32px, 5vw, 52px);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .gallery-header p {
+            color: #555;
+            font-size: 17px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        /* ===== Grid ===== */
+        .gallery-grid {
+            columns: 3;
+            column-gap: 16px;
+            padding: 0 24px 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 16px;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+        }
+        .gallery-item img {
+            width: 100%;
+            display: block;
+            border-radius: 16px;
+            transition: transform 0.3s ease;
+            margin: 0;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.03);
+        }
+        .gallery-item-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(22, 81, 104, 0);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+        .gallery-item-overlay i {
+            color: white;
+            font-size: 28px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .gallery-item:hover .gallery-item-overlay {
+            background: rgba(22, 81, 104, 0.35);
+        }
+        .gallery-item:hover .gallery-item-overlay i {
+            opacity: 1;
+        }
+
+        /* ===== Desktop lightbox ===== */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: 99999;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox-img-wrap {
+            max-width: 88vw;
+            max-height: 88vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox-img-wrap img {
+            max-width: 88vw;
+            max-height: 88vh;
+            object-fit: contain;
+            border-radius: 16px;
+            margin: 0;
+            display: block;
+        }
+        .lightbox-btn {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,212,204,0.15);
+            border: 2px solid rgba(255,212,204,0.4);
+            color: #FFD4CC;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            z-index: 100000;
+        }
+        .lightbox-btn:hover { background: #FFD4CC; color: #165168; }
+        .lightbox-prev { left: 24px; }
+        .lightbox-next { right: 24px; }
+        .lightbox-close {
+            position: fixed;
+            top: 20px;
+            right: 24px;
+            background: rgba(255,212,204,0.15);
+            border: 2px solid rgba(255,212,204,0.4);
+            color: #FFD4CC;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            z-index: 100000;
+        }
+        .lightbox-close:hover { background: #FFD4CC; color: #165168; }
+        .lightbox-counter {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.5);
+            font-size: 13px;
+            letter-spacing: 1px;
+            z-index: 100000;
+        }
+
+        /* ===== Mobile lightbox reel ===== */
+        .lightbox-reel {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: #000;
+            z-index: 99999;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .lightbox-reel::-webkit-scrollbar { display: none; }
+        .lightbox-reel.active { display: block; }
+        .lightbox-reel-item {
+            height: 100svh;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .lightbox-reel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 0 !important;
+            margin: 0;
+            display: block;
+        }
+        .lightbox-reel-counter {
+            position: absolute;
+            bottom: 110px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+        .lightbox-reel-close {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,212,204,0.15);
+            border: 2px solid rgba(255,212,204,0.4);
+            color: #FFD4CC;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 100000;
+        }
+        .lightbox-reel-close.active { display: flex; }
+
+        /* ===== Mobile grid ===== */
+        @media (max-width: 768px) {
+            .gallery-header {
+                padding-top: 100px;
+                padding-bottom: 24px;
+            }
+            .gallery-grid {
+                columns: 2;
+                column-gap: 10px;
+                padding: 0 12px 100px;
+            }
+            .gallery-item { margin-bottom: 10px; }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .gallery-grid { columns: 2; }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Spinner -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-lg-0 px-lg-5">
+        <a href="index.html" class="navbar-brand d-flex align-items-center">
+            <img src="img/android-chrome-192x192.png" alt="Half Baked India" class="brand-logo me-2">
+            <h1 class="brand-title m-0">Half Baked</h1>
+        </a>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav mx-auto p-4 p-lg-0">
+                <a href="index.html" class="nav-item nav-link">Home</a>
+                <a href="https://www.zomato.com/chandigarh/half-baked-sector-26" class="nav-item nav-link">Order Now</a>
+                <a href="https://www.instagram.com/halfbakedindia" class="nav-item nav-link">Instagram</a>
+                <a href="tel:+919815438880" class="nav-item nav-link">Contact Us</a>
+            </div>
+            <div class="d-none d-lg-flex">
+                <div class="flex-shrink-0 btn-lg-square border border-light rounded-circle">
+                    <i class="fa fa-mobile text-primary"></i>
+                </div>
+                <div class="ps-3">
+                    <small class="text-primary mb-0">Call Us</small>
+                    <p class="text-light fs-5 mb-0">+91 98154 38880</p>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="gallery-header">
+        <div class="container">
+            <h1>Our Gallery</h1>
+            <p>A small window into what comes out of our kitchen. Every one of these was baked fresh, to order.</p>
+        </div>
+    </div>
+
+    <!-- Grid -->
+    <div class="gallery-grid" id="galleryGrid">
+        <div class="gallery-item" data-index="0">
+            <img src="img/flowercake.jpg" alt="Custom floral cake Chandigarh">
+            <div class="gallery-item-overlay"><i class="fa fa-expand"></i></div>
+        </div>
+        <div class="gallery-item" data-index="1">
+            <img src="img/IMG_DAD2E8A520F6-1.jpg" alt="Burnt Basque Cheesecake Chandigarh">
+            <div class="gallery-item-overlay"><i class="fa fa-expand"></i></div>
+        </div>
+        <div class="gallery-item" data-index="2">
+            <img src="img/tiramisu.jpg" alt="Eggless tiramisu Chandigarh">
+            <div class="gallery-item-overlay"><i class="fa fa-expand"></i></div>
+        </div>
+        <div class="gallery-item" data-index="3">
+            <img src="img/IMG_8037 2.jpg" alt="Strawberry shortcake Chandigarh">
+            <div class="gallery-item-overlay"><i class="fa fa-expand"></i></div>
+        </div>
+        <div class="gallery-item" data-index="4">
+            <img src="img/biscoffbrownies-2.jpg" alt="Biscoff brownies Chandigarh">
+            <div class="gallery-item-overlay"><i class="fa fa-expand"></i></div>
+        </div>
+        <div class="gallery-item" data-index="5">
+            <img src="img/blueberrycake.jpg" alt="Blueberry cake Chandigarh">
+            <div class="gallery-item-overlay"><i class="fa fa-expand"></i></div>
+        </div>
+        <div class="gallery-item" data-index="6">
+            <img src="img/choccake.jpg" alt="Dark chocolate cake Chandigarh">
+            <div class="gallery-item-overlay"><i class="fa fa-expand"></i></div>
+        </div>
+        <div class="gallery-item" data-index="7">
+            <img src="img/mango-cake-ordering.jpg" alt="Mango cake delivery Chandigarh">
+            <div class="gallery-item-overlay"><i class="fa fa-expand"></i></div>
+        </div>
+        <div class="gallery-item" data-index="8">
+            <img src="img/IMG_7281.jpg" alt="Custom cake Half Baked Chandigarh">
+            <div class="gallery-item-overlay"><i class="fa fa-expand"></i></div>
+        </div>
+        <div class="gallery-item" data-index="9">
+            <img src="img/IMG_7194.jpg" alt="Trending cake Chandigarh">
+            <div class="gallery-item-overlay"><i class="fa fa-expand"></i></div>
+        </div>
+        <div class="gallery-item" data-index="10">
+            <img src="img/brownies1.jpg" alt="Fresh brownies Chandigarh">
+            <div class="gallery-item-overlay"><i class="fa fa-expand"></i></div>
+        </div>
+        <div class="gallery-item" data-index="11">
+            <img src="img/mangocake1.jpg" alt="Mango cake Half Baked">
+            <div class="gallery-item-overlay"><i class="fa fa-expand"></i></div>
+        </div>
+        <div class="gallery-item" data-index="12">
+            <img src="img/IMG_B963B90898AA-1.jpg" alt="Dessert Half Baked Chandigarh">
+            <div class="gallery-item-overlay"><i class="fa fa-expand"></i></div>
+        </div>
+        <div class="gallery-item" data-index="13">
+            <img src="img/gifts.jpg" alt="Gift hampers Chandigarh">
+            <div class="gallery-item-overlay"><i class="fa fa-expand"></i></div>
+        </div>
+        <div class="gallery-item" data-index="14">
+            <img src="img/catering.jpg" alt="Event catering Chandigarh">
+            <div class="gallery-item-overlay"><i class="fa fa-expand"></i></div>
+        </div>
+        <div class="gallery-item" data-index="15">
+            <img src="img/red box.jpg" alt="Half Baked packaging Chandigarh">
+            <div class="gallery-item-overlay"><i class="fa fa-expand"></i></div>
+        </div>
+    </div>
+
+    <!-- Desktop Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose"><i class="fa fa-times"></i></button>
+        <button class="lightbox-btn lightbox-prev" id="lightboxPrev"><i class="fa fa-chevron-left"></i></button>
+        <div class="lightbox-img-wrap">
+            <img src="" alt="" id="lightboxImg">
+        </div>
+        <button class="lightbox-btn lightbox-next" id="lightboxNext"><i class="fa fa-chevron-right"></i></button>
+        <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
+
+    <!-- Mobile Lightbox Reel -->
+    <button class="lightbox-reel-close" id="reelClose"><i class="fa fa-times"></i></button>
+    <div class="lightbox-reel" id="lightboxReel">
+        <div class="lightbox-reel-item"><img src="img/flowercake.jpg" alt="Custom floral cake"><div class="lightbox-reel-counter">1 / 16</div></div>
+        <div class="lightbox-reel-item"><img src="img/IMG_DAD2E8A520F6-1.jpg" alt="Burnt Basque Cheesecake"><div class="lightbox-reel-counter">2 / 16</div></div>
+        <div class="lightbox-reel-item"><img src="img/tiramisu.jpg" alt="Eggless tiramisu"><div class="lightbox-reel-counter">3 / 16</div></div>
+        <div class="lightbox-reel-item"><img src="img/IMG_8037 2.jpg" alt="Strawberry shortcake"><div class="lightbox-reel-counter">4 / 16</div></div>
+        <div class="lightbox-reel-item"><img src="img/biscoffbrownies-2.jpg" alt="Biscoff brownies"><div class="lightbox-reel-counter">5 / 16</div></div>
+        <div class="lightbox-reel-item"><img src="img/blueberrycake.jpg" alt="Blueberry cake"><div class="lightbox-reel-counter">6 / 16</div></div>
+        <div class="lightbox-reel-item"><img src="img/choccake.jpg" alt="Dark chocolate cake"><div class="lightbox-reel-counter">7 / 16</div></div>
+        <div class="lightbox-reel-item"><img src="img/mango-cake-ordering.jpg" alt="Mango cake"><div class="lightbox-reel-counter">8 / 16</div></div>
+        <div class="lightbox-reel-item"><img src="img/IMG_7281.jpg" alt="Custom cake"><div class="lightbox-reel-counter">9 / 16</div></div>
+        <div class="lightbox-reel-item"><img src="img/IMG_7194.jpg" alt="Trending cake"><div class="lightbox-reel-counter">10 / 16</div></div>
+        <div class="lightbox-reel-item"><img src="img/brownies1.jpg" alt="Fresh brownies"><div class="lightbox-reel-counter">11 / 16</div></div>
+        <div class="lightbox-reel-item"><img src="img/mangocake1.jpg" alt="Mango cake"><div class="lightbox-reel-counter">12 / 16</div></div>
+        <div class="lightbox-reel-item"><img src="img/IMG_B963B90898AA-1.jpg" alt="Dessert"><div class="lightbox-reel-counter">13 / 16</div></div>
+        <div class="lightbox-reel-item"><img src="img/gifts.jpg" alt="Gift hampers"><div class="lightbox-reel-counter">14 / 16</div></div>
+        <div class="lightbox-reel-item"><img src="img/catering.jpg" alt="Event catering"><div class="lightbox-reel-counter">15 / 16</div></div>
+        <div class="lightbox-reel-item"><img src="img/red box.jpg" alt="Half Baked packaging"><div class="lightbox-reel-counter">16 / 16</div></div>
+    </div>
+
+    <!-- Mobile Bottom Nav -->
+    <div class="mobile-bottom-nav">
+        <a href="index.html">
+            <i class="fa fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="https://www.zomato.com/chandigarh/half-baked-sector-26" target="_blank">
+            <i class="fa fa-shopping-bag"></i>
+            <span>Order Now</span>
+        </a>
+        <a href="https://www.instagram.com/halfbakedindia" target="_blank">
+            <i class="fab fa-instagram"></i>
+            <span>Instagram</span>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <div class="container-fluid footer-custom">
+        <div class="container py-5">
+            <div class="row g-5 align-items-start justify-content-between">
+                <div class="col-12 col-lg-3 d-flex justify-content-center justify-content-lg-start">
+                    <img src="img/android-chrome-192x192.png" alt="Half Baked India" class="footer-logo">
+                </div>
+                <div class="col-12 col-lg-4">
+                    <h4 class="footer-heading mb-4">Office Address</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>SCO 74, Grain Market Sector 26, Chandigarh</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 98154 38880</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c3a2aea2b1a2adaaadb7a6b1ada2b7aaacada2af83a4aea2aaafeda0acae">[email&#160;protected]</a></p>
+                </div>
+                <div class="col-12 col-lg-3">
+                    <h4 class="footer-heading mb-4">Quick Links</h4>
+                    <div class="d-flex flex-column">
+                        <a class="btn btn-link" href="index.html">Home</a>
+                        <a class="btn btn-link" href="gallery.html">Gallery</a>
+                        <a class="btn btn-link" href="https://www.zomato.com/chandigarh/half-baked-sector-26">Zomato</a>
+                        <a class="btn btn-link" href="https://www.instagram.com/halfbakedindia">Instagram</a>
+                        <a class="btn btn-link" href="contact.html">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="container-fluid copyright py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    &copy; <a href="#">2026 Amaran International</a>, All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <a href="https://wa.me/919815438880?text=Hi%20I%20would%20like%20to%20place%20an%20order%20from%20Half%20Baked"
+       class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        const images          = Array.from(document.querySelectorAll('.gallery-item img'));
+        const lightbox        = document.getElementById('lightbox');
+        const lightboxImg     = document.getElementById('lightboxImg');
+        const lightboxCounter = document.getElementById('lightboxCounter');
+        const lightboxReel    = document.getElementById('lightboxReel');
+        const reelClose       = document.getElementById('reelClose');
+        const reelItems       = Array.from(lightboxReel.querySelectorAll('.lightbox-reel-item'));
+        const total = images.length;
+        let current = 0;
+
+        const isMobile = () => window.innerWidth <= 768;
+
+        function openAt(index) {
+            current = index;
+            if (isMobile()) {
+                lightboxReel.classList.add('active');
+                reelClose.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                lightboxReel.scrollTo({ top: reelItems[current].offsetTop, behavior: 'instant' });
+            } else {
+                lightboxImg.src = images[current].src;
+                lightboxImg.alt = images[current].alt;
+                lightboxCounter.textContent = (current + 1) + ' / ' + total;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeAll() {
+            lightbox.classList.remove('active');
+            lightboxReel.classList.remove('active');
+            reelClose.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function showNext() {
+            current = (current + 1) % total;
+            lightboxImg.src = images[current].src;
+            lightboxImg.alt = images[current].alt;
+            lightboxCounter.textContent = (current + 1) + ' / ' + total;
+        }
+
+        function showPrev() {
+            current = (current - 1 + total) % total;
+            lightboxImg.src = images[current].src;
+            lightboxImg.alt = images[current].alt;
+            lightboxCounter.textContent = (current + 1) + ' / ' + total;
+        }
+
+        document.querySelectorAll('.gallery-item').forEach(function(item) {
+            item.addEventListener('click', function() {
+                openAt(parseInt(this.dataset.index));
+            });
+        });
+
+        document.getElementById('lightboxClose').addEventListener('click', closeAll);
+        reelClose.addEventListener('click', closeAll);
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) closeAll();
+        });
+
+        document.getElementById('lightboxNext').addEventListener('click', showNext);
+        document.getElementById('lightboxPrev').addEventListener('click', showPrev);
+
+        document.addEventListener('keydown', function(e) {
+            if (lightbox.classList.contains('active')) {
+                if (e.key === 'ArrowRight') showNext();
+                if (e.key === 'ArrowLeft')  showPrev();
+                if (e.key === 'Escape')     closeAll();
+            }
+            if (lightboxReel.classList.contains('active') && e.key === 'Escape') closeAll();
+        });
+
+        let touchStartX = 0;
+        lightbox.addEventListener('touchstart', function(e) {
+            touchStartX = e.touches[0].clientX;
+        }, { passive: true });
+        lightbox.addEventListener('touchend', function(e) {
+            const diff = touchStartX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 50) diff > 0 ? showNext() : showPrev();
+        }, { passive: true });
+    </script>
+
+</body>
+</html>
