@@ -5,17 +5,43 @@
     <meta charset="utf-8">
     <title>Half Baked - Online Eggless & Vegan Cake Delivery in Chandigarh</title>
     <meta property="og:title" content="Half Baked - Made-To-Order Eggless Bakery in Chandigarh">
-    <meta property="og:description" content="Freshly baked eggless cakes, trending desserts & custom cakes home delivered in Chandigarh. Order now!">
-    <meta property="og:image" content="https://www.halfbakedindia.com/img/LOGO.png">
+    <meta property="og:description" content="Half Baked is a delivery-only bakery focusing on eggless cakes, trending desserts & customised cakes, baked freshly on order and delivered to your doorstep.">
+    <meta property="og:image" content="https://www.halfbakedindia.com/img/flowercake>
     <meta property="og:url" content="https://www.halfbakedindia.com">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="Bakery in Chandigarh, fresh cakes, custom birthday cakes, wedding cakes, vegan desserts, cheesecake, cupcakes, brownies, best bakery in Chandigarh">
     <meta name="description" content="Discover fresh cakes, customised cakes & trending desserts in Chandigarh. Order online for same day cake delivery to your doorstep.">
-
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Bakery",
+            "name": "Half Baked",
+            "url": "https://halfbakedindia.com",
+            "logo": "https://halfbakedindia.com/img/android-chrome-192x192.png",
+            "image": "https://halfbakedindia.com/img/flowercake.webp",
+            "description": "Made-to-order eggless cakes and desserts delivered fresh in Chandigarh.",
+            "telephone": "+919815438880",
+            "email": "amaraninternational@gmail.com",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "SCO 74, Grain Market Sector 26",
+                "addressLocality": "Chandigarh",
+                "addressCountry": "IN"
+            },
+            "servesCuisine": "Bakery, Desserts",
+            "priceRange": "₹₹",
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.6",
+                "reviewCount": "1000"
+            }
+        }
+    </script>
+    
     <link href="img/favicon-32x32.png" rel="icon">
-   <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Playfair+Display:wght@600;700&display=swap&display=optional" rel="stylesheet">
     <!-- Critical CSS loads normally -->
@@ -30,12 +56,19 @@
 
     <link rel="preload" href="lib/owlcarousel/assets/owl.carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"></noscript>
+    
 </head>
 
 <body>
-    <!-- Spinner -->
-    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-grow text-primary" role="status"></div>
+    <!-- Loading Screen -->
+    <div id="spinner" class="show">
+        <img src="img/android-chrome-192x192.png" alt="Half Baked" class="loader-logo">
+        <p class="loader-text">preheating the oven...</p>
+        <div class="loader-dots">
+            <div class="loader-dot"></div>
+            <div class="loader-dot"></div>
+            <div class="loader-dot"></div>
+        </div>
     </div>
 
     <!-- Navbar -->
@@ -67,14 +100,28 @@
     <section class="container-fluid p-0 pb-5">
         <div class="owl-carousel header-carousel position-relative">
             <div class="owl-carousel-item position-relative">
-                <img class="img-fluid" fetchpriority="high" src="img/flowercake.webp" alt="Pinterest Cake in Chandigarh">
+                <img class="img-fluid" fetchpriority="high" src="img/brownies1.webp" alt="Best Brownies in Chandigarh">
                 <div class="owl-carousel-inner">
                     <div class="container">
                         <div class="row justify-content-start">
                             <div class="col-lg-8">
-                                <h1 class="display-1 text-light mb-4">We Bake When You Order</h1>
+                                <h1 class="display-1 text-light mb-4">We Bake Only When You Order</h1>
                                 <p class="text-light fs-5 mb-4 pb-3">All of our cakes are baked fresh after you order, that's the Half Baked guarantee. Get your cake delivered anywhere in Chandigarh.</p>
-                                <a href="https://www.zomato.com/chandigarh/half-baked-sector-26" class="btn btn-primary rounded-pill py-3 px-5">Order Now!</a>
+                                <a href="https://www.zomato.com/chandigarh/half-baked-sector-26" class="btn btn-primary rounded-pill py-3 px-5">Order Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="owl-carousel-item position-relative">
+                <img class="img-fluid" src="img/flowercake.webp" alt="Send Cake and Flowers in Chandigarh">
+                <div class="owl-carousel-inner">
+                    <div class="container">
+                        <div class="row justify-content-start">
+                            <div class="col-lg-8">
+                                <h1 class="display-1 text-light mb-4">Have Your Cake, And Eat It Too.</h1>
+                                <p class="text-light fs-5 mb-4 pb-3">We bake what you say, so you can customise your cakes endlessly, from the flavor down to the design. Personalise your cake and get it delivered to your doorstep.</p>
+                                <a href="tel:919815438880" class="btn btn-primary rounded-pill py-3 px-5">Contact Us</a>
                             </div>
                         </div>
                     </div>
@@ -86,9 +133,9 @@
                     <div class="container">
                         <div class="row justify-content-start">
                             <div class="col-lg-8">
-                                <h1 class="display-1 text-light mb-4">Have your cake, and Eat it too.</h1>
-                                <p class="text-light fs-5 mb-4 pb-3">We bake what you say, so you can customise your cakes endlessly, from the flavor down to the design. Personalise your cake and get it delivered to your doorstep.</p>
-                                <a href="contact.html" class="btn btn-primary rounded-pill py-3 px-5">Contact Us!</a>
+                                <h1 class="display-1 text-light mb-4">The Cherry on Top.</h1>
+                                <p class="text-light fs-5 mb-4 pb-3">All of Our cakes are eggless by default, but We also offer Vegan and Gluten-Free options, so no one has to miss out on a sweet treat.</p>
+                                <a href="tel:919815438880" class="btn btn-primary rounded-pill py-3 px-5">Contact Us</a>
                             </div>
                         </div>
                     </div>
@@ -126,7 +173,7 @@
                     <div class="fact-item rounded text-center h-100 p-5">
                         <i class="fa fa-star fa-4x mb-4"></i>
                         <p class="mb-2">Five Star Ratings</p>
-                        <h1 class="display-5 mb-0">1000+</h1>
+                        <h1 class="display-5 mb-0">1,000+</h1>
                     </div>
                 </div>
             </div>
@@ -151,15 +198,15 @@
                     <div class="h-100">
                         <p class="text-primary text-uppercase mb-2">About Us</p>
                         <h1 class="display-6 mb-4">Baked with Passion</h1>
-                        <p>Started in 2017 by two brothers, Half Baked quickly gained traction for its trending desserts and exceptional quality. Commended by customers as one of the most innovative bakeries in the tricity, Half Baked continuously works on making the best desserts and cakes, and delivering them to your doorstep.</p>
-                        <p>We the chefs at Half Baked follow a protocol of hygiene, quality and freshness that sets our cakes apart. Don't believe us? Try it out for yourself. We are constantly iterating and updating our menu baked on customer feedback.</p>
+                        <p>Half Baked is an affordable made-to-offer bakery in Chandigarh. Started in 2017 by two brothers, Half Baked quickly gained traction for its trending desserts and exceptional quality. Commended by customers as one of the most innovative bakeries in the tricity, Half Baked continuously works on making the best desserts and cakes, and delivering them to your doorstep.</p>
+                        <p>We the chefs at Half Baked follow a strict protocol of hygiene, quality and freshness that sets our cakes apart. Don't believe us? Try it out for yourself. We are constantly iterating our menu based on customer feedback, so every time you choose Half Baked, it just gets better.</p>
                         <div class="row g-2 mb-4">
                             <div class="col-sm-6"><i class="fa fa-check text-dark me-2"></i>Freshly Baked Eggless Cakes and Desserts</div>
-                            <div class="col-sm-6"><i class="fa fa-check text-dark me-2"></i>Made using High Quality Ingredients</div>
+                            <div class="col-sm-6"><i class="fa fa-check text-dark me-2"></i>Baked using High Quality Ingredients</div>
                             <div class="col-sm-6"><i class="fa fa-check text-dark me-2"></i>Home Delivery in Tricity</div>
                             <div class="col-sm-6"><i class="fa fa-check text-dark me-2"></i>Gluten-Free and Vegan Cakes Available</div>
                         </div>
-                        <a class="btn btn-primary rounded-pill py-3 px-5" href="https://www.zomato.com/chandigarh/half-baked-sector-26">Contact Us</a>
+                        <a class="btn btn-primary rounded-pill py-3 px-5" href="https://www.zomato.com/chandigarh/half-baked-sector-26">Order Now</a>
                     </div>
                 </div>
             </div>
@@ -368,7 +415,7 @@
                         <a class="btn btn-link" href="#">Home</a>
                         <a class="btn btn-link" href="https://www.zomato.com/chandigarh/half-baked-sector-26">Zomato</a>
                         <a class="btn btn-link" href="https://www.instagram.com/halfbakedindia">Instagram</a>
-                        <a class="btn btn-link" href="contact.html">Contact Us</a>
+                        <a class="btn btn-link" href="tel:919815438880">Contact Us</a>
                     </div>
                 </div>
 
@@ -381,7 +428,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
-                    &copy; <a href="#">2026 Amaran International</a>, All Rights Reserved.
+                    &copy; <a href="mailto:amaraninternational@gmail.com">2026 Amaran International</a>, All Rights Reserved.
                 </div>
             </div>
         </div>
