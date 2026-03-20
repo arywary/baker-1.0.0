@@ -978,7 +978,13 @@ img {
         min-height: 160px;
     }
 }
-/* ===== CLS Fix — lock navbar height ===== */
-.navbar {
-    min-height: 70px;
+
+/* ===== Fix carousel gap below navbar ===== */
+.header-carousel.owl-carousel {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+section.container-fluid.p-0.pb-5 {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
 }
